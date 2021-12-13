@@ -18,7 +18,7 @@ def about_func():
     # Do something DB
     return "Welcome to about page"
 
-# check
+
 
 
 
@@ -31,4 +31,3 @@ def catalog_func():
     #redirect -route
     #return redirect(url_for('catalog_func'))
 
-# Ars!!!!!
