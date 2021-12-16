@@ -1,25 +1,23 @@
-from flask import Flask, redirect , url_for
+from flask import Flask, redirect, url_for
+from flask import render_template
 app = Flask(__name__)
+
 
 @app.route('/home_page')
 @app.route('/home')
 @app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+def home_func():  # put application's code here
+    return render_template('Index.html')
 
 
 if __name__ == '__main__':
-    app.run()
-
-
-@app.route('/about', methods=['post'])
-def about_func():
-    #TODO
-    # Do something DB
-    return "Welcome to about page"
+    app.run(debug=True)
 
 
 
+@app.route('/about')
+def about_func(): # return about page
+    return render_template('about.html')
 
 
 @app.route('/catalogs')
