@@ -17,7 +17,16 @@ if __name__ == '__main__':
 
 @app.route('/about')
 def about_func(): # return about page
-    return render_template('about.html')
+    name = 'Tomer'
+    profile={'name': 'Guy', 'university':'second_name'}
+    degrees=['BSc','MSc']
+    hobbies=('art','surf','music')
+    university = 'BGU'
+    second_name = 'Tom'
+    return render_template('about.html', name='Yuval'
+        ,second_name=second_name, uni=university
+        ,profile=profile,degrees=degrees,hobbies=hobbies)
+
 
 
 @app.route('/catalogs')
@@ -28,4 +37,3 @@ def catalog_func():
     #url_for - calling func
     #redirect -route
     #return redirect(url_for('catalog_func'))
-
