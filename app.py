@@ -33,9 +33,9 @@ def about_func(): # return about page
 def catalog_func():
     return render_template(('Catalog.html'))
 
-@app.route('/extend_test')
+@app.route('/assignment8')
 def extend_func():
-    return render_template(('extend_test.html'))
+    return render_template(('assignment8.html'))
 
 #todo
 #url_for - calling func
