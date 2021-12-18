@@ -1,5 +1,5 @@
 body {
-    background: #ececec;
+    background: #f3f2ef;
     box-sizing      : border-box;
     margin: 0%;
 }
@@ -8,20 +8,20 @@ body {
 /* header menu */
 
 .btn{
-    color: #000000;
-    background: #c0c0c0;
-    padding:10px 20px;
-    font-size:12px;
+    color: whitesmoke;
+    background: #454545;
+    padding:7px 7px;
+    font-size:16px;
     text-decoration:none;
-    letter-spacing:10px;
+    letter-spacing:6px;
     text-transform:uppercase;
 }
 
 .btn:hover{
     border:none;
     background:rgba(0, 0, 0, 0.4);
-    background:#fff;
-    padding:20px 20px;
+    background: #e1e1e1;
+    padding:10px 10px;
     color:#1b1b1b;
 }
 
@@ -30,7 +30,7 @@ body {
 
 @font-face {
     font-family: myBestFont;
-    src: url(VarelaRound-Regular.ttf);
+    src: url('/static/VarelaRound-Regular.ttf');
 }
 
 
@@ -72,35 +72,38 @@ body {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
-
-.head { grid-area: 1 / 1 / 2 / 6; }
+.head { grid-area: 1  / 1 / 2 / 6; }
 .left { grid-area: 2 / 1 / 5 / 2; }
 .right { grid-area: 2 / 5 / 5 / 6; }
 .center { grid-area: 2 / 2 / 5 / 5; }
 .foot { grid-area: 5 / 1 / 6 / 6; }
 
-#top {
+.head{
     position: sticky;
-    background: #e0ffcd;
+    background: #ffffff;
     font-family: myBestFont;
-    top: 0.01vh;
     flex-flow: column wrap;
     text-align-last: center;
 
 }
 
 .center{
-    background: #fdffcd;
+    background: #f3f2ef;
     margin-bottom   : 10px;
     text-align-last: center;
     font-family: myBestFont;
 }
 
 .left{
-    background: #fdffcd;
+    background: #f3f2ef;
 }
 
-.foot{text-align-last: center;}
+.foot{
+    background: #f3f2ef;
+    text-align-last: center;
+    font-family: myBestFont;
+
+}
 
 
 #clickB {
