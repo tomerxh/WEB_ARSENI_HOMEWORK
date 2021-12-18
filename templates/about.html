@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="about.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/380d4e098b.js" crossorigin="anonymous"></script>
+    <script src=""></script>
+
+    <title>About</title>
+</head>
+
+<body>
+<div id="Container" class="grid-container">
+    {%  include 'header.html' %}
+
+    {%  include 'Footer.html' %}
+
+</div>
+
+<h1>About me</h1>
+<h2>{{ name }}</h2><br>
+<h2>{{ uni }}</h2>
+<h3>Name:{{ Name |default(second_name,true)|upper}}</h3>
+<h3>University:{{ university|default('DontKnow ',false)}} {{uni|lower()}}</h3>
+<ol>
+    <li>{{ degrees[0]}}</li>
+    <li>{{ degrees[1]}}</li>
+</ol>
+<h2>Hobbies:</h2>
+<ul>
+    {%for hobby in hobbies %}
+        <li>{{ hobby }}</li>
+    {% endfor %}
+
+    <li>{{ hobbies[0] }}</li>
+    <li>{{ hobbies[1] }}</li>
+    <li>{{ hobbies[2] }}</li>
+    <li>{{ hobbies[3] }}</li>
+</ul>
+
+<h3>Bla</h3>
+
+
+{% for key, value in profile.items() %}
+{{ key }} : {{ value }}
+{% endfor %}
+
+
+<!---  ID #    red .class --->
+
+
+
+</body>
+</html>

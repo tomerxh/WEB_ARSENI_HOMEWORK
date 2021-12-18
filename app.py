@@ -9,7 +9,7 @@ app = Flask(__name__)
 def home_func():  # put application's code here
     found = False
     if found:
-     return render_template('Index.html', name1='Tomer')
+        return render_template('Index.html', name1='Tomer')
     else:
         return render_template('Index.html')
 
@@ -26,18 +26,18 @@ def about_func(): # return about page
     university = 'BGU'
     second_name = 'Tom'
     return render_template('about.html', name='Yuval'
-        ,second_name=second_name, uni=university,profile=profile,degrees=degrees,hobbies=hobbies)
+                           ,second_name=second_name, uni=university,profile=profile,degrees=degrees,hobbies=hobbies)
 
 
 @app.route('/Catalog')
 def catalog_func():
     return render_template(('Catalog.html'))
 
+@app.route('/extend_test')
+def extend_func():
+    return render_template(('extend_test.html'))
 
-
-
-
-    #todo
-    #url_for - calling func
-    #redirect -route
-    #return redirect(url_for('catalog_func'))
+#todo
+#url_for - calling func
+#redirect -route
+#return redirect(url_for('catalog_func'))
