@@ -37,6 +37,12 @@ def catalog_func():
 def extend_func():
     return render_template(('assignment8.html'))
 
+
+@app.route('/login')
+def extend_func():
+    return render_template(('login'))
+
+
 #todo
 #url_for - calling func
 #redirect -route

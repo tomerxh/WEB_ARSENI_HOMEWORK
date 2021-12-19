@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <link rel="stylesheet" href="/static/css/myCV.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <script src="/static/JS/myCV.js"></script>
-    <title>About</title>
-</head>
+{% block title %}
+    AboutMe
+{% endblock %}
 
-<body>
-<div id="Container" class="grid-container">
-    {%  include 'header.html' %}
-
-
-
-
-
+{% block tohen %}
 <h1>About me</h1>
 <h2>{{ name }}</h2><br>
 <h2>{{ uni }}</h2>
@@ -45,10 +33,5 @@
 {% endfor %}
 
 
-<!---  ID #    red .class --->
 
-    {%  include 'Footer.html' %}
-</div>
-
-</body>
-</html>
+{% endblock %}
