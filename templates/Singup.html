@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Signup
+{% endblock %}
+
+{% block tohen %}
+ <form action="action_page.php" style="border:none">
+                <div class="info">
+                    <h1 class="title1">הרשמה</h1>
+
+                    <label for="email" class="labels"><b>כתובת מייל</b></label><br>
+                    <input type="text" placeholder="הכנס כתובת דואר אלקטרוני" name="email" required><br>
+
+                    <label for="password" class="labels"><b>סיסמה</b></label><br>
+                    <input type="password" placeholder="הקלד סיסמה" name="password" required><br>
+
+                    <label for="password-repeat" class="labels"><b>חזור על הסיסמה</b></label><br>
+                    <input type="password" placeholder="הקלד סיסמה בשנית" name="psw-repeat" required><br>
+
+                    <label for="name" class="labels"><b>שם מלא</b></label><br>
+                    <input type="text" placeholder="הכנס שם מלא" name="name" required>  <br>
+
+                    <label for="birthday" class="labels"><b>:תאריך לידה</b></label> <br>
+                    <input type="date" id="birthday" name="birthday" required> <br>
+
+                    <label for="phone" class="labels"><b>:הכנס מספר טלפון</b></label><br>
+                    <input type="tel" id="phone" name="phone" placeholder="05X-XXXXXXX" pattern="[0-9]{3}-[0-9]{7}" required><br>
+                    <br>
+                     <label for="Gender" class="labels"><b>מין (סמנ/י)</b></label><br>
+                    <input type="radio" id="gender" name="fav_language" value="gender">
+                    <label for="html">נקבה</label>
+                    <input type="radio" id="gender" name="fav_language" value="gender">
+                    <label for="css">זכר</label><br>
+
+
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> זכור אותי
+                    </label>
+
+
+                    </div>
+                        <button id="clickB" type="submit" class="label">לחצ/י להרשמה</button>
+        </form>
+
+{% endblock %}

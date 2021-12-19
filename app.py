@@ -38,9 +38,15 @@ def extend_func():
     return render_template(('assignment8.html'))
 
 
-@app.route('/login')
-def extend_func():
-    return render_template(('login'))
+@app.route('/Login')
+def login_func():
+    return render_template(('login.html'))
+
+
+@app.route('/Singup')
+def signUp_func():
+    return render_template(('Singup.html'))
+
 
 
 #todo
