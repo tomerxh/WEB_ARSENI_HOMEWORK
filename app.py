@@ -18,13 +18,13 @@ if __name__ == '__main__':
 
 @app.route('/about')
 def about_func(): # return about page
-    name = 'Tomer'
+    name = 'Tomer1'
     #dicionary
     profile={'name': 'Guy', 'university':'second_name'}
     degrees=['BSc','MSc','dr']
     hobbies=('art','surf','music','drive')
     university = 'BGU'
-    second_name = 'Tom'
+    second_name = 'Tomer'
     return render_template('about.html', name='Yuval'
                            ,second_name=second_name, uni=university,profile=profile,degrees=degrees,hobbies=hobbies)
 
@@ -34,7 +34,7 @@ def catalog_func():
     return render_template(('Catalog.html'))
 
 @app.route('/assignment8')
-def extend_func():
+def assigment8_func():
     return render_template(('assignment8.html'))
 
 

@@ -1,37 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    AboutMe
+AboutMe
 {% endblock %}
 
 {% block tohen %}
+
 <h1>About me</h1>
-<h2>{{ name }}</h2><br>
-<h2>{{ uni }}</h2>
-<h3>Name:{{ Name |default(second_name,true)|upper}}</h3>
-<h3>University:{{ university|default('DontKnow ',false)}} {{uni|lower()}}</h3>
-<ol>
-    <li>{{ degrees[0]}}</li>
-    <li>{{ degrees[1]}}</li>
-</ol>
-
-<h2>Hobbies:</h2>
-<ul>
-    {%for hobby in hobbies %}
-        <li>{{ hobby }}</li>
-    {% endfor %}
-
-    <li>{{ hobbies[0] }}</li>
-    <li>{{ hobbies[1] }}</li>
-</ul>
-
-<h3>Bla</h3>
-
-
-{% for key, value in profile.items() %}
-    {{ key }} : {{ value }}
-{% endfor %}
-
-
 
 {% endblock %}
