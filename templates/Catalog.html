@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="/static/css/myCV.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalog</title>
-    <script src="/static/JS/myCV.js"></script>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+    Catalog
+{% endblock %}
 
 
-<div id="Container" class="grid-container">
-    {%  include 'header.html' %}
+{% block tohen %}
 
-<h1>Welcome to catalog page</h1>
+    <h1>Welcome to catalog page</h1>
+    <for></for>
+    <form action="/Catalog" method="get">
+        product:  <input name="product" type="text" id="clickB">
+        size: <input name="size" type="text" id="clickB">
+        <input type="submit" id="clickB">
+    </form>
 
 
-{%  include 'Footer.html' %}
-</div>
+   <h3> you picked product: ...</h3>  <br>
+   <h3> you picked size: ...</h3>
 
-</body>
-</html>
+{% endblock %}
