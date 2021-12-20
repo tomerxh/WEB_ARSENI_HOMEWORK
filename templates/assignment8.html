@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Assigment8
+{% endblock %}
+
+{% block tohen %}
+
+
+<h3>Name:{{ Name |default(second_name,true)|upper}}</h3>
+<h3>University:{{ university|default('DontKnow ',false)}} {{uni|lower()}}</h3>
+<ol>
+    <li>{{ degrees[0]}}</li>
+    <li>{{ degrees[1]}}</li>
+</ol>
+
+<h2>Hobbies:</h2>
+<ul>
+    {%for hobby in hobbies %}
+        <li>{{ hobby }}</li>
+    {% endfor %}
+
+</ul>
+
+<h3>Bla</h3>
+
+
+{% for key, value in profile.items() %}
+    {{ key }} : {{ value }}<br>
+{% endfor %}
+
+{% endblock %}
