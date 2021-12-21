@@ -1,14 +1,14 @@
-from flask import Flask, redirect, url_for
-from flask import render_template
-from flask import request
+from flask import Flask, redirect,render_template, url_for, request, session
+
 
 app = Flask(__name__)
+app.secret_key = '123'
 
 @app.route('/home_page')
 @app.route('/home')
 @app.route('/')
 def home_func():  # put application's code here
-    found = False
+    found = True
     if found:
         return render_template('Index.html', name1='Tomer')
     else:
@@ -26,7 +26,13 @@ def about_func():  # return about page
 
 @app.route('/Catalog')
 def catalog_func():
-    return render_template(('Catalog.html'))
+    if 'product' in request.args:
+        product = request.args['product']
+        size = request.args['size']
+        if product =='':
+            return render_template('Catalog.html', p_size=size)
+        return render_template('Catalog.html',p_name=product,p_size=size )
+    return render_template('Catalog.html')
 
 
 @app.route('/assignment8')
@@ -44,14 +50,23 @@ def ass_func():
                            , second_name=second_name, uni=university, profile=profile, degrees=degrees, hobbies=hobbies)
 
 
-@app.route('/Login')
+@app.route('/Login', methods=['GET','POST'])
 def login_func():
-    return render_template(('login.html'))
+    if request.method =='GET':
+        return render_template('login.html')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        found = True
+        if found:
+            session['username'] = username
+            return redirect(url_for('home_func'))
+    return render_template('login.html')
 
 
 @app.route('/Singup')
 def signUp_func():
-    return render_template(('Singup.html'))
+    return render_template('Singup.html')
 
 # todo
 # url_for - calling func

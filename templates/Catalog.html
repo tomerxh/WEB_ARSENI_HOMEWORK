@@ -15,8 +15,11 @@
         <input type="submit" id="clickB">
     </form>
 
-
-   <h3> you picked product: ...</h3>  <br>
-   <h3> you picked size: ...</h3>
+    {%  if p_name %}
+        <h3> you picked product: {{ p_name }}</h3>  <br>
+    {% endif %}
+    {%  if p_size %}
+        <h3> you picked size: {{ p_size }}</h3>
+    {% endif %}
 
 {% endblock %}
