@@ -6,27 +6,30 @@
 
 {% block tohen %}
 
-    <form action="/Login" method="POST">
-        <h1 class="signin">התחברות</h1>
+    {%  if session.username %}
+        <h2>Welcome back! {{ session.username }}</h2>
+    {% else %}
+        <form action="/Login" method="POST">
+            <h1 class="signin">התחברות</h1>
 
-        <label><b>כתובת מייל</b></label><br>
-        <input id="username" name="username" type="email" placeholder="הכנס כתובת דואר אלקטרוני"><br><br>
+            <label><b>כתובת מייל</b></label><br>
+            <input id="username" name="username" type="email" placeholder="הכנס כתובת דואר אלקטרוני"><br><br>
 
-        <label><b>הזנ/י סיסמה</b></label><br>
-        <input id="password" name="password" type="password" placeholder="הקלד סיסמה"  minlength="2"><br><br><br>
+            <label><b>הזנ/י סיסמה</b></label><br>
+            <input id="password" name="password" type="password" placeholder="הקלד סיסמה"  minlength="2"><br><br><br>
 
-        <button ID="clickB" type="submit">התחבר</button>
-        <br><br>
-
-
-        {% if username %}
-            <h3>Welcome back! {{ username }}</h3>
-        {% endif %}
-    </form>
-
-    <button type="button"  ID="clickB" onclick="window.location.href='{{ url_for( 'signUp_func') }}';">?משתמש חדש</button>
+            <button ID="clickB" type="submit">התחבר</button>
+            <br><br>
 
 
+            {% if username %}
+                <h3>Welcome back! {{ username }}</h3>
+            {% endif %}
+        </form>
+
+        <button type="button"  ID="clickB" onclick="window.location.href='{{ url_for( 'signUp_func') }}';">?משתמש חדש</button>
+
+    {% endif %}
 
 
 {% endblock %}

@@ -3,5 +3,9 @@
     <a href="/about" class="btn">About</a>
     <a href="/Catalog" class="btn">Catalog</a>
     <a href="/assignment8" class="btn">Assignment8</a>
+    {% if session.username %}
+        <a href="/Logout" class="btn">Log out</a>
+    {% else %}
     <a href="/Login" class="btn">Log In\Registered</a>
+    {% endif %}
 </div>

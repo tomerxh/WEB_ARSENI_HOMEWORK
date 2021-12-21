@@ -4,19 +4,21 @@ from flask import Flask, redirect,render_template, url_for, request, session
 app = Flask(__name__)
 app.secret_key = '123'
 
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 @app.route('/home_page')
 @app.route('/home')
 @app.route('/')
 def home_func():  # put application's code here
+
     found = True
     if found:
-        return render_template('Index.html', name1='Tomer')
+        return render_template('Index.html')
     else:
         return render_template('Index.html')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
 
 
 @app.route('/about')
@@ -60,13 +62,20 @@ def login_func():
         found = True
         if found:
             session['username'] = username
-            return redirect(url_for('home_func'))
+            return redirect(url_for('home_func', username=username))
     return render_template('login.html')
 
 
 @app.route('/Singup')
 def signUp_func():
-    return render_template('Singup.html')
+    return render_te
+
+
+@app.route('/Logout')
+def logOut_func():
+    session['username'] = ''
+    return render_template('index.html')
+
 
 # todo
 # url_for - calling func
