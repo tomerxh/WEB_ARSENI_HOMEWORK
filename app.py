@@ -3,6 +3,7 @@ from flask import Flask, redirect,render_template, url_for, request, session
 
 app = Flask(__name__)
 app.secret_key = '123'
+app.config.from_pyfile('setting.py')
 
 
 if __name__ == '__main__':
@@ -24,6 +25,10 @@ def home_func():  # put application's code here
 @app.route('/about')
 def about_func():  # return about page
     return render_template('about.html')
+
+##about
+from pages.about.about import about
+app.register_blueprint(about)
 
 
 @app.route('/Catalog')
