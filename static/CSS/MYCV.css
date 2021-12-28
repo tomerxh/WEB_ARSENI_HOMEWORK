@@ -90,7 +90,7 @@ body {
 .center{
     background: #f3f2ef;
     margin-bottom   : 10px;
-    text-align-last: center;
+    text-align: center;
     font-family: myBestFont;
 }
 
@@ -105,6 +105,13 @@ body {
 
 }
 
+#users_form{
+    text-align-last: left;
+}
+
+#list_form{
+    text-align-last: left;
+}
 
 #clickB {
     width: 20%;

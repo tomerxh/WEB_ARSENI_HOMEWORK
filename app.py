@@ -81,9 +81,21 @@ def logOut_func():
 
 @app.route('/users')
 def users_func():
-     return render_template('users.html', users=f)
+    query='select * from users;'
+    users = interact_db(query=query, query_type='fetch')
+    return render_template('users.html', users=users)
+
+@app.route('/insert_user',methods=['post'])
+def insert_user_func():
+    name  = request.form['name']
+    email  = request.form['email']
+    password  = request.form['password']
+
+    query = "insert into users(name,email,password) values ('%s','%s','%s');" % (name,email,password);
+    interact_db(query=query, query_type='commit')
 
 
+    return redirect('/users')
 # todo
 # url_for - calling func
 # redirect -route
