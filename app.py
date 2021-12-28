@@ -1,9 +1,10 @@
 from flask import Flask, redirect,render_template, url_for, request, session
+from interact_with_DB import interact_db
 
 
 app = Flask(__name__)
 app.secret_key = '123'
-app.config.from_pyfile('setting.py')
+
 
 
 if __name__ == '__main__':
@@ -26,9 +27,6 @@ def home_func():  # put application's code here
 def about_func():  # return about page
     return render_template('about.html')
 
-##about
-from pages.about.about import about
-app.register_blueprint(about)
 
 
 @app.route('/Catalog')
@@ -80,6 +78,10 @@ def signUp_func():
 def logOut_func():
     session['username'] = ''
     return render_template('index.html')
+
+@app.route('/users')
+def users_func():
+     return render_template('users.html', users=f)
 
 
 # todo
