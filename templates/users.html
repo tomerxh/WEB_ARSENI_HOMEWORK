@@ -20,8 +20,8 @@
         {% for user in users %}
             <li>
                 <form action="/delete_user" method="post"  style="display: inline">
-                    <input type="hidden" value="{{ user.id }}">
-                    <input type="submit" value="Delete">
+                    <input type="hidden" name="id" value="{{ user.id }}">
+                    <input type="submit" value="X">
                 </form>User name: {{ user.name }} ,Email: {{ user.email }}</li>
         {% endfor %}
     </ul>

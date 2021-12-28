@@ -94,8 +94,19 @@ def insert_user_func():
     query = "insert into users(name,email,password) values ('%s','%s','%s');" % (name,email,password);
     interact_db(query=query, query_type='commit')
 
-
     return redirect('/users')
+
+
+@app.route('/delete_user', methods=['post'])
+def delete_func():
+    user_id = request.form['id']
+    query= "delete from users where id='%s';" % user_id
+    interact_db(query=query, query_type='commit')
+    return redirect('/users')
+
+
+
+
 # todo
 # url_for - calling func
 # redirect -route
