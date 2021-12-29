@@ -1,15 +1,14 @@
 from flask import Flask, redirect,render_template, url_for, request, session
 from interact_with_DB import interact_db
+import requst
 
 
 app = Flask(__name__)
 app.secret_key = '123'
 
 
-
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 @app.route('/home_page')
 @app.route('/home')
@@ -68,10 +67,9 @@ def login_func():
             return redirect(url_for('home_func', username=username))
     return render_template('login.html')
 
-
 @app.route('/Singup')
 def signUp_func():
-    return render_te
+    return render_template('Singup.html')
 
 
 @app.route('/Logout')
@@ -104,6 +102,13 @@ def delete_func():
     interact_db(query=query, query_type='commit')
     return redirect('/users')
 
+@app.route('/request_frontend')
+def request_frontend_func():
+    return render_template('/request_frontend.html')
+
+@app.route('/request_backend')
+def request_back_func():
+    return render_template('/request_backend.html')
 
 
 
