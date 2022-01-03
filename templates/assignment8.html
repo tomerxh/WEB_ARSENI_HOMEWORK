@@ -1,32 +1,43 @@
-{% extends 'base.html' %}
+{% extends 'baseAss8.html' %}
 
 {% block title %}
-Assigment8
+    Assigment8
 {% endblock %}
 
 {% block tohen %}
 
-<h1>Try</h1>
-<h3>Name:{{ Name |default(second_name,true)|upper}}</h3>
-<h3>University:{{ university|default('DontKnow ',false)}} {{uni|lower()}}</h3>
-<ol>
-    <li>{{ degrees[0]}}</li>
-    <li>{{ degrees[1]}}</li>
-</ol>
+    {% if name %}
+        <h1>Assigment 8</h1>
+        <h3>Name:{{ Name  |default(name,true|upper)}}</h3>
+        <h3>{{ university |default('My university is: ',false)}} {{uni|lower()}}</h3>
+        <h2>Our degrees are:</h2>
+        <ol>
+            <li>{{ degrees[0]}}</li>
+            <li>{{ degrees[1]}}</li>
+            <li>{{ degrees[2]}}</li>
+        </ol>
 
-<h2>Hobbies:</h2>
-<ul>
-    {%for hobby in hobbies %}
-        <li>{{ hobby }}</li>
-    {% endfor %}
-
-</ul>
-
-<h3>Bla</h3>
+        <h3>My hobbies are:</h3>
+        <ul>
+            {%for hobby in hobbies %}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+        </ul>
 
 
-{% for key, value in profile.items() %}
-    {{ key }} : {{ value }}<br>
-{% endfor %}
+
+        <h3>Dictionary example</h3>
+        {% for key, value in profile.items() %}
+            {{ key }} : {{ value }}<br>
+        {% endfor %}
+
+
+        <div>
+        {{ super() }}
+        </div>
+
+    {% else %}
+        <h1>My hobbies are not your business (:</h1>
+    {% endif %}
 
 {% endblock %}

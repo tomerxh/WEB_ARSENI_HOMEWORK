@@ -96,6 +96,8 @@ body {
 
 .left{
     background: #f3f2ef;
+    text-align: center;
+    font-family: myBestFont;
 }
 
 .foot{
