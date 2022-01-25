@@ -109,15 +109,15 @@ def users_func():
 
 @app.route('/insert_user',methods=['post'])
 def insert_user_func():
-    name  = request.form['name']
-    email  = request.form['email']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form['email']
     password  = request.form['password']
 
-    query = "insert into users(name,email,password) values ('%s','%s','%s');" % (name,email,password);
+    query = "insert into users(first_name,last_name,email,password) values ('%s','%s','%s','%s');" % (first_name,last_name,email,password);
     interact_db(query=query, query_type='commit')
 
     return redirect('/users')
-
 
 @app.route('/delete_user', methods=['post'])
 def delete_func():
@@ -151,6 +151,8 @@ def get_pockemons(num):
     return pokemons
 
 
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
 
 if __name__ == '__main__':
     app.run(debug=True)

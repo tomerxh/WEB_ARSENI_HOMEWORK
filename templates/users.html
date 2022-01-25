@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    Users
-{% endblock %}
+{% block title %} Users {% endblock %}
 
 {% block tohen %}
     <h1>Users page</h1>
-    <h2>Insert Form:</h2>
+        <h2>Insert Form:</h2>
     <form action="/insert_user" method="post" id="users_form">
-        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="first_name" placeholder="first_name">
+        <input type="text" name="last_name" placeholder="last_name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="insert">
@@ -22,7 +21,7 @@
                 <form action="/delete_user" method="post"  style="display: inline">
                     <input type="hidden" name="id" value="{{ user.id }}">
                     <input type="submit" value="X">
-                </form>User name: {{ user.name }} ,Email: {{ user.email }}</li>
+                </form>User name: {{ user.first_name }} {{ user.last_name }},Email: {{ user.email }}</li>
         {% endfor %}
     </ul>
 
