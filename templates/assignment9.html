@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Assignment 9
+{% endblock %}
+
+{% block tohen %}
+
+    Search First Name:
+    <form method="GET" action="/assignment9">
+        <input name="firstname" type="text">
+        <input type=submit value="search">
+    </form>
+    {% if firstname %}
+        <h2>Search Result: </h2>
+        {% for user in MyUsers %}
+            {% if user['firstname'] == firstname %}
+                <h3> Full name: {{ user['firstname'] }} {{ user['lastname'] }} , email: {{ user['email'] }}<br>
+                </h3>
+            {% endif %}
+        {% endfor %}
+        <br>
+    {% else %}
+        <h2>List of users to search:</h2>
+        {% for user in Users %}
+            <ul> Name: {{ user['firstname'] }} {{ user['lastname'] }} , Email: {{ user['email'] }}<br>
+            </ul>
+        {% endfor %}
+    {% endif %}
+    {% if session.LoggedIn %}
+        <h3>Do you want to log out already?</h3>
+       The logout button is available in header menu
+    {% else %}
+        Enter Username:
+        <form method="POST" action="/assignment9">
+            <input name="username">
+            <input type=submit>
+        </form>
+    {% endif %}
+
+{% endblock %}

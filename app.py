@@ -9,11 +9,11 @@ app = Flask(__name__)
 app.secret_key = '123'
 
 
+
 @app.route('/home_page')
 @app.route('/home')
 @app.route('/')
 def home_func():  # put application's code here
-
     found = True
     if found:
         return render_template('Index.html')
@@ -40,16 +40,43 @@ def catalog_func():
 @app.route('/assignment8')
 def ass_func():
     name = 'Tomer'
-    # dicionary
-    profile = {'Dictionary key 1': 'Test1', 'Dictionary key 2': 'Test2'}
+    # dictionary
+    profile = {'dictionary 1': 'Test1', 'dictionary 2': 'Test2'}
     # list
     degrees = ['BSc', 'MSc', 'PHD']
-    # tupple
-    hobbies = ('Art', 'Surf', 'Music', 'Drive')
+    # tuple
+    hobbies = ('art', 'surf', 'music', 'drive')
     university = 'BGU'
     second_name = 'Tom'
-    return render_template('assignment8.html', name=name , second_name=second_name,
+    return render_template('assignment8.html', name=name, second_name=second_name,
                            uni=university, profile=profile, degrees=degrees, hobbies=hobbies)
+
+@app.route('/assignment9', methods=['GET', 'POST'])
+def ass9_func():
+    username = ''
+    Users = [
+        {'id': 1, 'email': "omer_adam@gmail.com", 'firstname': "Omer", 'lastname': "Adam"},
+        {'id': 2, 'email': "Davidblue@gmail.com", 'firstname': "David", 'lastname': "Blue"},
+        {'id': 3, 'email': "AviBen@gmail.com", 'firstname': "Avi", 'lastname': "Ben"},
+        {'id': 4, 'email': "mokeeD@gmail.com", 'firstname': "Mok", 'lastname': "di"},
+        {'id': 5, 'email': "GuyAman@gmail.com", 'firstname': "Guy", 'lastname': "Aman"},
+        {'id': 6, 'email': "Dennislloyd@gmail.com", 'firstname': "Dennis", 'lastname': "lloyd"}
+    ]
+    firstname = ''
+    if request.method == 'GET':
+        if 'firstname' in request.args:
+            firstname = request.args['firstname']
+    elif request.method == 'POST':
+        if 'username' in request.form:
+            username = request.form['username']
+            session['LoggedIn'] = True
+            session['username'] = username
+        else:
+            session['LoggedIn'] = False
+            session['username'] = ''
+            username = ''
+    return render_template('Assignment9.html', Users=Users, username=username, firstname=firstname,
+                           request_method=request.method)
 
 
 @app.route('/Login', methods=['GET','POST'])
@@ -68,7 +95,6 @@ def login_func():
 @app.route('/Singup')
 def signUp_func():
     return render_template('Singup.html')
-
 
 @app.route('/Logout')
 def logOut_func():
