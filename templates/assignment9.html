@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Assignment 9
+    Assignment 9
 {% endblock %}
 
 {% block tohen %}
+
+    {% if  session.username  %}
+        <h1>Welcome back..!  {{ session.username }}</h1>
+        <h2 class="{%if name%}logged_in{% else %}stranger {% endif %}"></h2>
+    {% endif %}
 
     Search First Name:
     <form method="GET" action="/assignment9">
@@ -13,7 +18,7 @@ Assignment 9
     </form>
     {% if firstname %}
         <h2>Search Result: </h2>
-        {% for user in MyUsers %}
+        {% for user in Users %}
             {% if user['firstname'] == firstname %}
                 <h3> Full name: {{ user['firstname'] }} {{ user['lastname'] }} , email: {{ user['email'] }}<br>
                 </h3>
@@ -27,9 +32,9 @@ Assignment 9
             </ul>
         {% endfor %}
     {% endif %}
-    {% if session.LoggedIn %}
+    {%  if session.username  %}
         <h3>Do you want to log out already?</h3>
-       The logout button is available in header menu
+        Please pay attention: the logout button is available in header menu
     {% else %}
         Enter Username:
         <form method="POST" action="/assignment9">
