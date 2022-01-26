@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Assignment 10{% endblock %}
+
+{% block tohen %}
+
+    <h3> Insertion: </h3>
+    <form action="/insert_user" method="post" id="users_form">
+        <input type="text" name="first_name" placeholder="first_name">
+        <input type="text" name="last_name" placeholder="last_name">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+    </form>
+    <br><br>
+    <input type="submit" ID="clickB" value="Insert">
+    {% if session.insert %} <h3> successful! </h3> {% endif %}
+
+    <h3> Update: </h3>
+    <form action = "/update_user" method="post" id="users_form">
+        User old email:
+        <input type="email" name="old_email" placeholder="User's old Email">
+        <br><br>
+        please fill new user info:
+        <br>
+        <input type="email" name="new_email" placeholder="Email">
+        <input type="text" name="new_first" placeholder="First Name">
+        <input type="text" name="new_last" placeholder="Last Name">
+        <input type="password" name="new_password" placeholder="Password">
+    </form>
+    <br>
+
+    <input type="submit" ID="clickB" value="Update">
+    {% if session.update %}
+        <h3>  update successful! </h3>
+    {% endif %}
+
+    <h3> Delete:</h3>
+    <form action="/delete_func" method="post">
+        Please write down the email of the user?<br>
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="submit" ID="clickB" value="Delete">
+    </form>
+    <br>
+
+
+    {% if session.delete %} <h3> Your delete was successful! </h3> {% endif %}
+
+
+    <h3> List of users: </h3>
+    <ul  id="list_form">
+        {% for user in users %}
+            <li> Full name: {{ user['first_name'] }} {{ user['last_name'] }} , email: {{ user['email'] }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

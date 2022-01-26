@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Assignment 11
+{% endblock %}
+
+{% block tohen %}
+
+    <H1>Welcome to Assignment 11</H1><br>
+    <h2>FrontEnd side Please Insert and ID:</h2>
+    <form name="frontend_form" >
+        Insert ID: <input name="id" type=text" id="frontID"><br>
+        <br>
+        <button type="button" ID="clickB" onclick="getUsers('frontID')">Get user</button>
+    </form>
+
+
+    <script src="/static/assignment11.js"></script>
+    <hr>
+
+    <h2>BackEnd side Please insert an ID:</h2>
+    <form method="POST" action="/assignment11/outersource">
+        Insert ID: <input name="id" type=text" id="backID"><br>
+        <input type="submit" value="Get User"  ID="clickB">
+    </form>
+    {% if user %}
+        <h3> user id: {{ user['data']['id'] }} </h3>
+        <h3> email: {{ user['data']['email'] }}</h3>
+        <h3> first_name: {{ user['data']['first_name'] }}</h3>
+        <h3> last_name: {{ user['data']['last_name'] }}</h3>
+    {% endif %}
+
+{% endblock %}

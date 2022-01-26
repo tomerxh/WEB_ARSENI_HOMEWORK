@@ -1,11 +1,7 @@
-import random
-
 from django.contrib.sites import requests
-from flask import Flask, redirect,render_template, url_for, request, session ,flash, jsonify
+from flask import Flask, redirect,render_template, url_for, request, session , jsonify
 from interact_with_DB import interact_db
-import requests
-import random
-
+import requests, random
 
 
 app = Flask(__name__)
@@ -23,12 +19,12 @@ def home_func():  # put application's code here
     else:
         return render_template('Index.html')
 
-
+# -----About------#
 @app.route('/about')
 def about_func():  # return about page
     return render_template('about.html')
 
-
+# -----Catalog------#
 @app.route('/Catalog')
 def catalog_func():
     if 'product' in request.args:
@@ -39,7 +35,7 @@ def catalog_func():
         return render_template('Catalog.html',p_name=product,p_size=size )
     return render_template('Catalog.html')
 
-
+# -----assignment 8------#
 @app.route('/assignment8')
 def ass_func():
     name = 'Tomer'
@@ -56,7 +52,7 @@ def ass_func():
 
 
 
-
+# -----assignment 9------#
 @app.route('/assignment9', methods=['GET', 'POST'])
 def ass9_func():
     username = ''
@@ -84,11 +80,7 @@ def ass9_func():
     return render_template('Assignment9.html', Users=Users, username=username, firstname=firstname,
                            request_method=request.method)
 
-
-@app.route('/assignment11')
-def ass11_func():
-    return render_template('assignment11.html')
-
+# -----assignment 11------#
 
 @app.route('/assignment11/users')
 def json_users_func():
@@ -97,39 +89,22 @@ def json_users_func():
     json_users = jsonify(users_query)
     return json_users
 
-
-@app.route('/assignment11/outer_source',  methods=['GET', 'POST'])
-def assignment11_outer_source():
-    return render_template('assignment11_outsource.html')
-
-def get_user(id):
-    if (id != ""):
-        user_id = int(id)
-        return requests.get(f'https://reqres.in/api/users/{user_id}').json()
-
-    users = []
-    length = len(requests.get(f'https://reqres.in/api/users').json()['data'])
-
-    for i in range(1, length+1):
-        res = requests.get(f'https://reqres.in/api/users/{i}')
-        res = res.json()
-        users.append(res)
-    return users
-
-@app.route('/req_backend')
-def req_backend():
-    if "user_id" in request.args:
-        user_id = request.args['user_id']
-        if user_id == "":
-            users = get_user(user_id)
-            return render_template('request_outer_source.html', users=users)
-        else:
-            user = get_user(user_id)
-            return render_template('request_outer_source.html', user=user)
-
-    return render_template('request_outer_source.html')
+def get_user(id_num):
+    user = requests.get(f' https://reqres.in/api/users/{id_num}')
+    user = user.json()
+    return user
 
 
+@app.route('/assignment11/outer_source', methods=['GET', 'POST'])
+def assignment11_outsource():
+    if request.method == 'POST':
+        id_num = request.form['id']
+        user = get_user(id_num)
+        return render_template('assignment11_out.html', user=user)
+    return render_template('assignment11_out.html')
+
+
+# -----assignment 12------#
 @app.route('/assignment12')
 def ass12_func():
     return render_template('assignment12.html')
@@ -148,15 +123,18 @@ def login_func():
             return redirect(url_for('home_func', username=username))
     return render_template('login.html')
 
+
+# -----Sign up------#
 @app.route('/Singup')
 def signUp_func():
     return render_template('Singup.html')
-
+# -----Log out------#
 @app.route('/Logout')
 def logOut_func():
     session['username'] = ''
     return render_template('index.html')
 
+# -----Users class------#
 @app.route('/users')
 def users_func():
     query='select * from users;'
