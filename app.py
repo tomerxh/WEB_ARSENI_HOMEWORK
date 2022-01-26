@@ -95,7 +95,7 @@ def get_user(id_num):
     return user
 
 
-@app.route('/assignment11/outer_source', methods=['GET', 'POST'])
+@app.route('/assignment11', methods=['GET', 'POST'])
 def assignment11_outsource():
     if request.method == 'POST':
         id_num = request.form['id']
