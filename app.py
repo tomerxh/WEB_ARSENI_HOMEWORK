@@ -1,8 +1,11 @@
 import random
 
-from flask import Flask, redirect,render_template, url_for, request, session
+from django.contrib.sites import requests
+from flask import Flask, redirect,render_template, url_for, request, session ,flash, jsonify
 from interact_with_DB import interact_db
 import requests
+import random
+
 
 
 app = Flask(__name__)
@@ -50,6 +53,26 @@ def ass_func():
     second_name = 'Tom'
     return render_template('assignment8.html', name=name, second_name=second_name,
                            uni=university, profile=profile, degrees=degrees, hobbies=hobbies)
+
+
+@app.route('/assignment11')
+def ass11_func():
+    return render_template('assignment11.html')
+
+
+@app.route('/assignment11/users')
+def json_users_func():
+    query = "select * from users"
+    users_query = interact_db(query=query, query_type='fetch')
+    json_users = jsonify(users_query)
+    return json_users
+
+
+@app.route('/assignment11/outer_source',  methods=['GET', 'POST'])
+def assignment11_outer_source():
+    return render_template('assignment11_outsource.html')
+
+
 
 @app.route('/assignment9', methods=['GET', 'POST'])
 def ass9_func():
