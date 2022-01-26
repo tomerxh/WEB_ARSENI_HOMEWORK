@@ -55,23 +55,6 @@ def ass_func():
                            uni=university, profile=profile, degrees=degrees, hobbies=hobbies)
 
 
-@app.route('/assignment11')
-def ass11_func():
-    return render_template('assignment11.html')
-
-
-@app.route('/assignment11/users')
-def json_users_func():
-    query = "select * from users"
-    users_query = interact_db(query=query, query_type='fetch')
-    json_users = jsonify(users_query)
-    return json_users
-
-
-@app.route('/assignment11/outer_source',  methods=['GET', 'POST'])
-def assignment11_outer_source():
-    return render_template('assignment11_outsource.html')
-
 
 
 @app.route('/assignment9', methods=['GET', 'POST'])
@@ -100,6 +83,56 @@ def ass9_func():
             username = ''
     return render_template('Assignment9.html', Users=Users, username=username, firstname=firstname,
                            request_method=request.method)
+
+
+@app.route('/assignment11')
+def ass11_func():
+    return render_template('assignment11.html')
+
+
+@app.route('/assignment11/users')
+def json_users_func():
+    query = "select * from users"
+    users_query = interact_db(query=query, query_type='fetch')
+    json_users = jsonify(users_query)
+    return json_users
+
+
+@app.route('/assignment11/outer_source',  methods=['GET', 'POST'])
+def assignment11_outer_source():
+    return render_template('assignment11_outsource.html')
+
+def get_user(id):
+    if (id != ""):
+        user_id = int(id)
+        return requests.get(f'https://reqres.in/api/users/{user_id}').json()
+
+    users = []
+    length = len(requests.get(f'https://reqres.in/api/users').json()['data'])
+
+    for i in range(1, length+1):
+        res = requests.get(f'https://reqres.in/api/users/{i}')
+        res = res.json()
+        users.append(res)
+    return users
+
+@app.route('/req_backend')
+def req_backend():
+    if "user_id" in request.args:
+        user_id = request.args['user_id']
+        if user_id == "":
+            users = get_user(user_id)
+            return render_template('request_outer_source.html', users=users)
+        else:
+            user = get_user(user_id)
+            return render_template('request_outer_source.html', user=user)
+
+    return render_template('request_outer_source.html')
+
+
+@app.route('/assignment12')
+def ass12_func():
+    return render_template('assignment12.html')
 
 
 @app.route('/Login', methods=['GET','POST'])
