@@ -21,7 +21,8 @@
                 <form action="/delete_user" method="post"  style="display: inline">
                     <input type="hidden" name="id" value="{{ user.id }}">
                     <input type="submit" value="X">
-                </form>User name: {{ user.first_name }} {{ user.last_name }},Email: {{ user.email }}</li>
+                </form>
+                User name: {{ user.first_name }} {{ user.last_name }},Email: {{ user.email }}</li>
         {% endfor %}
     </ul>
 
